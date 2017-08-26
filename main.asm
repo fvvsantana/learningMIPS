@@ -3,16 +3,15 @@
 .text
 	.globl main
 	main:
-		
-		#read input
+		#input
 		li $v0, 5
 		syscall
 		
-		#call fibonacci()
+		#call function
 		move $a0, $v0
-		jal fibonacci
+		jal factorial
 		
-		#print answer
+		#print
 		move $a0, $v0
 		li $v0, 1
 		syscall
