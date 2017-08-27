@@ -21,7 +21,6 @@
 		move $s0, $a0 #n
 		move $s1, $a1 #p
 		
-		
 		#a = n!
 		jal factorial #as $a0 already is equal n:
 		move $s2, $v0
