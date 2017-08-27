@@ -1,2 +1,2 @@
 # learningMIPS
-Fibonacci, factorial and combination program.
+Fibonacci, factorial and combination programs.
