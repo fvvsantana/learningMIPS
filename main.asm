@@ -3,7 +3,7 @@
 .text
 	.globl main
 	main:
-	
+		jal testCombination
 		
 		#exit
 		li $v0, 10

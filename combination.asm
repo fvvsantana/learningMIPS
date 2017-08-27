@@ -1,10 +1,12 @@
 .data
-
+	m1: .asciiz "Insert n: "
+	m2: .asciiz "Insert p: "
+	m3: .asciiz "Combination: "
 .text
 	.globl combination
 	combination: #(int n, int p)
 		#save return address and s registers
-		subi $sp, $sp, 36
+		sub $sp, $sp, 36
 		sw $ra, 0($sp)
 		sw $s0, 4($sp)
 		sw $s1, 8($sp)
@@ -53,7 +55,7 @@
 		lw $s5, 24($sp)
 		lw $s6, 28($sp)
 		lw $s7, 32($sp)
-		addi $sp, $sp, 36
+		add $sp, $sp, 36
 		
 		#return answer
 		jr $ra
@@ -61,15 +63,23 @@
 	.globl testCombination
 	testCombination:
 		#save return address 
-		subi $sp, $sp, 4
+		sub $sp, $sp, 4
 		sw $ra, 0($sp)
 		
+		#request for input n
+		li $v0, 4
+		la $a0, m1
+		syscall
 		#read input n
 		li $v0, 5
 		syscall
-		#store n in $a0
-		move $a0, $v0
+		#store n in $t0
+		move $t0, $v0
 		
+		#request for input p
+		li $v0, 4
+		la $a0, m2
+		syscall
 		#read input p
 		li $v0, 5
 		syscall
@@ -77,16 +87,22 @@
 		move $a1, $v0
 		
 		#call function
+		move $a0, $t0
 		jal combination
 		
+		#print m3
+		move $t0, $v0 #t0 = answer
+		li $v0, 4
+		la $a0, m3
+		syscall
 		#print result
-		move $a0, $v0
+		move $a0, $t0 #$a0 = t0
 		li $v0, 1
 		syscall
 		
 		#load old return address
 		lw $ra, 0($sp)
-		addi $sp, $sp, 4
+		add $sp, $sp, 4
 		 
 		#return
 		jr $ra
