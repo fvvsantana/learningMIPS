@@ -3,7 +3,7 @@
 .text
 	.globl main
 	main:
-		jal testFactorial
+		jal testRFactorial
 		
 		#exit
 		li $v0, 10
