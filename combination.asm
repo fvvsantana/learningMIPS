@@ -1,7 +1,7 @@
 .data
 	m1: .asciiz "Insert n: "
 	m2: .asciiz "Insert p: "
-	m3: .asciiz "Combination: "
+	m3: .asciiz "Combination(n, p): "
 .text
 	.globl combination
 	combination: #(int n, int p)
